@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ReelHook AI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 🔥 Hero Section -->
+    <h1>🚀 Fix Your Reel Hook in Seconds</h1>
+
+    <p class="subtext">
+        Most reels fail in the first 3 seconds ❌ <br>
+        This AI tells you WHY — and fixes it instantly 🤖
+    </p>
+
+    <!-- 💡 Input Form -->
+    <div class="card">
+
+        <form action="/analyze" method="POST" onsubmit="showLoading()">
+            <input 
+                type="text" 
+                name="hook" 
+                placeholder="Enter your reel idea (e.g., gym motivation)" 
+                required
+            >
+
+            <br><br>
+
+            <button type="submit" class="btn">
+                🔥 Analyze My Hook
+            </button>
+        </form>
+
+        <!-- ⏳ Loading -->
+        <p id="loading" style="display:none; margin-top:10px;">
+            🤖 Analyzing with AI...
+        </p>
+
+    </div>
+
+    <!-- 🎯 Problem Section -->
+    <div class="card">
+        <h2>Why your reels are not working?</h2>
+        <ul>
+            <li>❌ Weak hook (no attention)</li>
+            <li>❌ No emotion or curiosity</li>
+            <li>❌ Too generic content</li>
+        </ul>
+    </div>
+
+    <!-- 💥 Value Section -->
+    <div class="card">
+        <h2>What this tool gives you</h2>
+        <ul>
+            <li>✅ Hook score</li>
+            <li>✅ Viral hook suggestions</li>
+            <li>✅ Content improvement tips</li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- ⚡ Script -->
+<script>
+function showLoading() {
+    document.getElementById("loading").style.display = "block";
+}
+</script>
+
+</body>
+</html>

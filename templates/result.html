@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Result</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🤖 AI Hook Analysis</h1>
+
+    <!-- 🔥 IDEA -->
+    <div class="card">
+        <p><strong>Your Idea:</strong></p>
+        <p class="highlight">{{ original }}</p>
+    </div>
+
+    <!-- 📊 SCORE -->
+    <div class="card">
+        <h2>📊 Score</h2>
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ score * 10 }}%"></div>
+        </div>
+        <p>{{ score }}/10</p>
+    </div>
+
+    <!-- ⚠️ PROBLEMS -->
+    <div class="card">
+        <h2>⚠️ Problems</h2>
+        <ul>
+            {% for p in problems %}
+                <li>{{ p }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- 🔥 SUGGESTIONS -->
+    <div class="card">
+        <h2>🔥 Viral Hook Ideas</h2>
+
+        <div class="hooks-container">
+            {% for s in suggestions %}
+            <div class="hook-card">
+                <span>{{ s }}</span>
+            <button onclick="copySingle('{{ s }}')" class="copy-btn">📋</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- 🎯 HOOK TYPE -->
+    <div class="card">
+        <h2>🎯 Hook Type</h2>
+        <p>{{ hook_type }}</p>
+    </div>
+
+    <!-- 📋 COPY BUTTON -->
+    <button onclick="copyText()" class="btn">📋 Copy All Hooks</button>
+
+    <!-- 🔁 REGENERATE -->
+    <form action="/analyze" method="POST" style="display:inline;">
+        <input type="hidden" name="hook" value="{{ original }}">
+        <button type="submit" class="btn"
+            onclick="this.innerText='Generating... 🤖'">
+            🔁 Regenerate Hooks
+        </button>
+    </form>
+
+    <br><br>
+
+    <!-- 🔙 BACK -->
+    <a href="/" class="btn">⬅ Try Again</a>
+
+</div>
+
+<!-- ⚡ SCRIPT -->
+<script>
+function copyText() {
+    const suggestions = {{ suggestions | tojson }};
+
+    let text = "";
+    suggestions.forEach(s => {
+        text += "- " + s + "\n";
+    });
+
+    navigator.clipboard.writeText(text);
+    alert("Copied!");
+}
+</script>
+
+</body>
+</html>
