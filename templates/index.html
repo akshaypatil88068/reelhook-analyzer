@@ -6,6 +6,11 @@
 </head>
 <body>
 
+<div id="loader">
+  <div class="spinner"></div>
+  <p>Loading your experience...</p>
+</div>
+
 <div class="container">
 
     <!-- 🔥 Hero Section -->
@@ -62,6 +67,13 @@
     </div>
 
 </div>
+
+<!-- ⚡ Script -->
+<script>
+  window.addEventListener("load", function () {
+    document.getElementById("loader").style.display = "none";
+  });
+</script>
 
 <!-- ⚡ Script -->
 <script>
